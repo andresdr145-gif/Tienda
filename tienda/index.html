@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOVEDADES TV · Encuentra lo que necesitas</title>
+  <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra superior: logo, buscador y carrito -->
+  <header class="navbar navbar-dark bg-nova sticky-top">
+    <div class="container-xl gap-2">
+      <a class="navbar-brand fw-bold" href="#">🛍️ NOVEDADES TV</a>
+
+      <form class="flex-grow-1 order-3 order-sm-2" role="search" onsubmit="return false">
+        <label for="busqueda" class="visually-hidden">Buscar productos</label>
+        <input type="search" id="busqueda" class="form-control" placeholder="Buscar productos, p. ej. «mouse»">
+      </form>
+
+      <button class="btn btn-warning order-2 order-sm-3" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+        🛒 <span class="d-none d-sm-inline">Carrito</span>
+        <span class="badge bg-dark" id="contador">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container-xl py-3">
+    <!-- Categorías -->
+    <nav id="categorias" class="d-flex flex-wrap gap-2 mb-3" aria-label="Categorías"></nav>
+
+    <p id="conteo" class="text-secondary small" aria-live="polite"></p>
+
+    <!-- Productos: 1 columna en móvil, 2 en tableta, 3-4 en escritorio -->
+    <div id="productos" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3"></div>
+
+    <p id="vacio" class="text-center text-secondary py-5 d-none">🔍 No se encontraron productos.</p>
+  </main>
+
+  <!-- Carrito (panel lateral de Bootstrap) -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="panelCarrito" aria-labelledby="tituloCarrito">
+    <div class="offcanvas-header border-bottom">
+      <h2 class="offcanvas-title h5" id="tituloCarrito">Tu carrito</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar carrito"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="itemsCarrito" class="flex-grow-1"></div>
+      <div class="border-top pt-3">
+        <p class="fs-5 fw-bold d-flex justify-content-between">Total <span>$<span id="total">0.00</span></span></p>
+        <button class="btn btn-outline-danger w-100" id="btnVaciar" type="button">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
